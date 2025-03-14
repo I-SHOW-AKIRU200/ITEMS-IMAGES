@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.classList.add("item");
 
             const img = document.createElement("img");
-
             const imageName = `${item.Icon_Name}.png`;
 
             img.src = `pngs/100x100/${imageName}`;
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             itemDiv.appendChild(img);
             itemDiv.appendChild(name);
-            itemDiv.addEventListener("click", () => showOverlay(item));
+            itemDiv.addEventListener("click", () => showOverlay(item, img.src));
             container.appendChild(itemDiv);
         });
     }
@@ -94,12 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function showOverlay(item) {
+    function showOverlay(item, imgSrc) {
         document.getElementById("overlay").style.display = "flex";
-        document.getElementById("item-name").textContent = item.Name;
-        document.getElementById("item-id").textContent = item.Item_ID;
-        document.getElementById("item-icon").textContent = item.Icon_Name;
-        document.getElementById("item-textid").textContent = item.TextID;
+        document.getElementById("overlay-image").src = imgSrc;
+        document.getElementById("overlay-name").textContent = item.Name;
+        document.getElementById("overlay-id").textContent = item.Item_ID;
+        document.getElementById("overlay-icon").textContent = item.Icon_Name;
     }
 
     document.getElementById("close-overlay").addEventListener("click", function () {
